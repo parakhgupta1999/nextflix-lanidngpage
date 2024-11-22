@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>netflix clone</title>
+</head>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: #fff;
+        line-height: 1.5;
+        margin: 0;
+
+
+
+        line-height: 1.5;
+    }
+
+    .frontpage {
+        background: url(netflixbackgound.png);
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        opacity: 0.44;
+
+    }
+
+    .frontpage::after {
+        background-color: black;
+        height: 100%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        content: '';
+        position: absolute;
+        opacity: .9;
+        z-index: -1;
+    }
+
+    .leftlogo {
+        width: 12rem;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        gap: 40%;
+        position: absolute;
+        top: 1px;
+    }
+
+    button {
+        padding: 10px;
+    }
+
+    .english {
+        margin: 1rem;
+        font-size: .9rem;
+        width: 130px;
+        background-color: transparent;
+        color: white;
+        border-radius: 5px;
+        border: 2px solid gray;
+
+    }
+
+    .right .english .bx {
+        margin: 0 4px 0 9px;
+    }
+
+    .red {
+        color: white;
+        background-color: red;
+        font-size: .9rem;
+        width: 90px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .pagedetails {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        /* padding: 12px; */
+        line-height: 70px;
+        align-items: center;
+        color: wheat;
+
+    }
+
+    .pagedetails h1 {
+        text-align: center;
+        color: white;
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+
+    h1 {
+        font: bolder;
+    }
+
+    .pagedetails h4 {
+        color: white;
+        text-align: center;
+        font-size: 1rem;
+        /* margin-bottom: 10px; */
+
+    }
+
+    h4 {
+        padding: 0px;
+        margin: 0;
+    }
+
+    /* button {
+        background-color: red;
+        color: white;
+        font-size: 1rem;
+    } */
+
+    input[type="email"] {
+        background-color: transparent;
+        font-size: 1rem;
+        padding: 12px;
+        border-radius: 10px;
+        width: 70%;
+
+
+    }
+
+    input[type="email"]::placeholder {
+        color: white;
+        opacity: 1;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+
+    .pagebutton {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .buttonpage {
+        background-color: red;
+        border-radius: 10px;
+        color: white;
+        padding: 13px;
+        border: none;
+        width: 40%;
+    }
+
+    .section1 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        border-top: 4px solid palevioletred;
+        /* margin-bottom: 70px; */
+    }
+
+    .movies {
+        width: 80%;
+        margin: 50px;
+    }
+
+    .moviebuttons {
+        /* background-color: transparent; */
+        margin: 10px 0 20px 0;
+        /* gap: 1222222px; */
+        display: flex;
+        /* border-radius: 20px; */
+    }
+
+    .movies .moviebuttons {
+        gap: 30px;
+    }
+
+    .moviebuttons .india,
+    .movie {
+        font-size: medium;
+        /* gap: 122px; */
+        padding: 12px;
+    }
+
+    .india,
+    .movie {
+        background-color: transparent;
+        color: white;
+        border-radius: 10px;
+        gap: 12px;
+        border: 1px solid gray;
+        /* margin: 50px; */
+
+    }
+
+    .movieposters {
+        width: 100%;
+        /* margin: 12px; */
+        display: flex;
+        overflow-x: auto;
+        /* Horizontal scrolling */
+        /* scroll-snap-type: x mandatory; */
+        /* Smooth snap scrolling */
+        gap: 10px;
+        /* Space between posters */
+        padding: 10px;
+
+        margin: auto;
+        background-color: transparent;
+        border-radius: 10px;
+        /* box-shadow: inset 0px -3px 15px rgba(0, 0, 0, 0.2); */
+        padding: 10px 40px 10px 40px;
+    }
+
+    .pp {
+        flex: 0 0 calc(20% - 10px);
+        /* Display 5 items at a time */
+        scroll-snap-align: center;
+        height: fit-content;
+        /* Adjust the height of the posters */
+
+        /* Placeholder color for each poster */
+        border-radius: 5px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .movies .movieposters {
+        margin: 10px;
+    }
+
+    .section2 {
+        width: 100%;
+        /* text-align: left; */
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        /* padding: 20px; */
+    }
+
+    .join {
+        width: 80%;
+        /* padding: 2px 40px 10px 20px; */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+    }
+
+    .boxes {
+        width: 100%;
+        /* margin: 10px; */
+        display: flex;
+        justify-content: left;
+        /* gap: 102px; */
+    }
+
+    .box {
+        height: 18rem;
+        width: 25rem;
+        border-radius: 12px;
+        margin-right: 20px;
+        display: inline-block;
+        background: linear-gradient(to bottom right, black, purple 70%, pink 100%, white, Blue);
+        position: relative;
+
+        /* padding: 20px; */
+    }
+
+
+
+    .join .boxes .box {
+        padding: 20px;
+    }
+
+    .join .boxes .box h1 {
+        margin-bottom: 15px;
+    }
+
+    .head {
+        display: flex;
+        justify-content: left;
+        width: 50%;
+        margin-bottom: 10px;
+    }
+
+    .box p {
+        color: gray;
+    }
+
+    .bx-desktop,
+    .bx-right-down-arrow-circle,
+    .bx-tv,
+    .bx-child {
+        font-size: 80px;
+        position: absolute;
+        background: linear-gradient(red 10%, purple 70%, palevioletred);
+        -webkit-background-clip: text;
+        color: transparent;
+        background-clip: text;
+        justify-content: baseline;
+        align-items: center;
+        right: 0;
+        bottom: 0;
+        padding: 10px;
+    }
+
+    .section3 {
+        display: flex;
+        /* justify-content: center; */
+        width: 100%;
+        padding: 50px;
+    }
+
+    .four {
+        width: 80%;
+        margin: 30px 40px 4px 100px;
+        display: flex;
+        flex-direction: column
+    }
+
+    .question {
+        margin: 12px 0 1px 0;
+        font-size: 28px;
+    }
+
+    .faq {
+        margin: 12px 0 0px 0;
+        /* gap: 1222px; */
+        font-size: 40px;
+        line-height: 60px;
+        word-spacing: .1rem;
+
+    }
+
+    summary {
+        background-color: black;
+        width: 100%;
+        font-size: 40px;
+        display: flex;
+        justify-content: space-between;
+
+
+    }
+
+    .midsection {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin-left: 60px;
+        padding-left: 90px;
+    }
+
+    .mid {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    /* 
+    .form {
+        display: flex;
+        align-items: center;
+    }
+    /* justify-content: center; */
+
+    input[type="email"] {
+        width: 60%;
+        font-size: 31px;
+        height: 59px;
+    }
+
+    .get {
+        width: 28%;
+        background-color: red;
+        color: white;
+        border-radius: 10px;
+        height: 59px;
+        font-size: 31px;
+    }
+
+    .contact {
+        margin: 2rem 0 2rem 4rem;
+        font-size: 29px;
+    }
+
+    .contact a {
+        /* text-decoration: none; */
+        color: white;
+
+    }
+
+    footer {
+        width: 90%;
+
+    }
+
+    .last {
+        width: 90%;
+        display: flex;
+        margin-left: 6.3rem;
+        justify-content: space-evenly;
+    }
+
+    .a {
+        width: 8rem;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 19px;
+    }
+
+    .a a {
+        margin-bottom: 12px;
+        width: 15rem;
+        margin-right: 24rem;
+        color: white;
+
+    }
+
+    .total {
+        display: flex;
+        /* justify-content: space-between; */
+        flex-direction: column;
+    }
+
+    .finalbutton {
+        margin-left: 15rem;
+    }
+
+    .final {
+        border-radius: 10px;
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+        width: 5rem;
+        height: min-content;
+
+    }
+
+    .netflixindia {
+        margin-left: 15rem;
+        margin-top: 3rem;
+        margin-bottom: 10rem;
+    }
+</style>
+
+<body>
+    <div class="frontpage">
+        <nav>
+
+            <div class="logo">
+                <img src="netflixlogo.png" class="leftlogo" alt="">
+            </div>
+            <div class="right">
+
+                <button class="english"><i class='bx bxs-comment-minus'></i>English <i
+                        class='bx bxs-down-arrow'></i></button>
+
+                <button class="red">Sign in</button>
+            </div>
+        </nav>
+        <div class="pagedetails">
+            <h1>Unlimited movies,TV <br>
+                shows, and more</h1>
+            <h4>Starts from $149. Cancel Anytime.</h4>
+            <h4>Ready to watch? Enter your email address to create or restart your memebership</h4>
+            <div class="pagebutton">
+
+                <input type="email" name="Email" placeholder="Email Address" id="">
+                <button class="buttonpage">Get started <i class='bx bx-chevron-right'></i></button>
+            </div>
+        </div>
+    </div>
+    <section class="section1">
+        <div class="movies">
+            <h1>Trending Now</h1>
+            <div class="moviebuttons">
+                <button class="india">India <i class='bx bxs-down-arrow'></i></button>
+                <button class="movie">Movies <i class='bx bxs-down-arrow'></i></button>
+            </div>
+            <div class="movieposters">
+                <div class="pp"><img src="p1.jpg" alt=""></div>
+                <div class="pp"><img src="p2.jpg" alt=""></div>
+                <div class="pp"><img src="p3.jpg" alt=""></div>
+                <div class="pp"><img src="p4.jpg" alt=""></div>
+                <div class="pp"><img src="p5.jpg" alt=""></div>
+                <div class="pp"><img src="p6.jpg" alt=""></div>
+                <div class="pp"><img src="p7.jpg" alt=""></div>
+                <div class="pp"><img src="p8.jpg" alt=""></div>
+                <div class="pp"><img src="p9.jpg" alt=""></div>
+                <div class="pp"><img src="p10.jpg" alt=""></div>
+            </div>
+    </section>
+    <section class="section2">
+        <div class="join">
+            <div class="head">
+                <h2>More reasons to join</h2>
+            </div>
+            <div class="boxes">
+                <div class="box">
+                    <h1>Enjoy your TV</h1>
+                    <P>Watch on smart TV's ,Playstation Xbox,Chromecast,Apple TV ,Blueray players and more</P>
+                    <i class='bx bx-desktop'></i>
+                </div>
+                <div class="box">
+                    <h1>Download you sows to watch offline</h1>
+                    <p>Save your favorites easily and always have something to watch</p>
+                    <i class='bx bx-right-down-arrow-circle'></i>
+                </div>
+                <div class="box">
+                    <h1>Watch everywhere</h1>
+                    <p>Stream unlimited movies and TV shows on your phone, tbalet,laptop, and TV</p><i
+                        class='bx bx-tv'></i>
+                </div>
+                <div class="box">
+                    <h1>Create profiles for kids</h1>
+                    <p>Send kids on adventure with their favourite chracters ina asoace made just for them &dash; free
+                        with
+                        your membershipp</p>
+                    <i class='bx bx-child'></i>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="section3">
+        <div class="four">
+            <div class="question">
+                <h1> Frequenlty Asked Questions</h1>
+            </div>
+            <div class="faq">
+                <details>
+                    <summary>What is netflix? <i class='bx bx-plus'></i></summary>
+                    <p>Netflix is streaming sevice that offer a wide variuty of award winning TV shows, movies, anime,
+                        documentries and more- on thousands of internet-conneted devices.</p>
+                    <p>You can watch as much as you want ,whenver you want,woutohut a single ad-all for one low monthly
+                        price.There's always something new to discover and the new TV shows and movies are added every
+                        week
+                    </p>
+                </details>
+                <details>
+                    <summary>How much does netflix cost? <i class='bx bx-plus'></i></summary>
+                    <p>WatchNetflix on your smartphone ,tablet,Smart TV,laptop,or streaming device, all for one fixed
+                        monthly fee.Plans range from $149 to $646 a month.NO extra cost,no contracts.</p>
+                </details>
+                <details>
+                    <summary>Where can i watch? <i class='bx bx-plus'></i></summary>
+                    <p>Watch anywhere, anytime.Sign in with your Netflix account to watch instanlty on the web at
+                        netflix.com from your personal computer or on any internet connected device that offer the
+                        netflix
+                        app, inlcunding smart TV's , smartphones,tablets, streaming media players and game consoles.</p>
+                    <p>You can also download your favorute shows with IOS or Android app. Use download to watch while
+                        you're
+                        on the go and without an internet connection.Take Netflix with you anywhere.</p>
+                </details>
+                <details>
+                    <summary>How do i cancel? <i class='bx bx-plus'></i></summary>
+                    <p>Netflix is flexible. There are no annoying contracts and no commitments. You can easily cancel
+                        your
+                        account online in two clicks.There are no cancellation fees-start or stop your account anytime.
+                    </p>
+                </details>
+                <details>
+                    <summary>What can i watch on Netflix? <i class='bx bx-plus'></i></summary>
+                    <p>Netflix has an extensive library of feature films,documentries,TV shows,anime,award-wining
+                        Netflix
+                        originals,and more.Watch as much as you want, anytime you want.</p>
+                </details>
+                <details>
+                    <summary>
+                        Is Netflix good for kids? <i class='bx bx-plus'></i>
+                    </summary>
+                    <p>The Netflix kids experience is included in your membership to give parents control while kids
+                        enjoy
+                        family-friendly TV shows and films in their own space.</p>
+                    <p>Kids profiles come with PIN-protcte controls that let you restrict the maturity rating of content
+                        kids can watch and block specific titles you dont want you kids to see.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+    <section class="midsection">
+        <div class="mid">
+            <h5>
+                Ready to watch? Enter to create or restart your membership.
+            </h5>
+        </div>
+        <div class="form">
+            <form action="email">
+                <input type="email" name="email" placeholder="Enter Email here" id="final">
+                <button class="get">Get Started</button>
+            </form>
+        </div>
+        <div class="contact">
+            <H6>Questions? Call <a href="#">000-800-919-1694</a></H6>
+        </div>
+    </section>
+    <footer>
+        <div class="total">
+            <div class="last">
+                <div class="a">
+                    <a href="">FAQ</a>
+                    <a href="">Invester Relations</a>
+                    <a href="">Privacy</a>
+                    <a href="">Speed Test</a>
+                </div>
+                <div class="a">
+                    <a href="">Help center</a>
+                    <a href="">Jobs</a>
+                    <a href="">Cookies Preferences</a>
+                    <a href="">Legal Notice</a>
+                </div>
+                <div class="a">
+                    <a href="#">Account</a>
+                    <a href="#">Ways to Watch</a>
+                    <a href="#">Corporate Information</a><a href="#">Only on Netflix</a>
+                </div>
+                <div class="a">
+                    <a href="">Media Centre</a><a href="">Terms of Use</a><a href="">Contact Us</a><a
+                        href="">Nothing</a>
+                </div>
+            </div>
+            <div class="finalbutton">
+                <button class="final">English</button>
+            </div>
+            <div class="netflixindia">
+                Netflix India
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
